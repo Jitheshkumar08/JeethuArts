@@ -1,0 +1,15 @@
+# Sensitive info
+.env
+
+# Uploads
+uploads/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Node dependencies
+node_modules/
+
+# Logs
+*.log
