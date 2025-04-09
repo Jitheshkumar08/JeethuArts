@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Sora:wght@100..800&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Outfit", sans-serif;
+}
+
+:root {
+    --red: #cb051d;
+    --pale: #fbfbf3;
+    --black: #141414;
+    --black-subheading: #1d1d1d;
+    --grey: #6b6b6b;
+    --light-grey: #d2d0ca;
+    --lightest-grey: #e7e5de;
+    --green: #4cd137;
+    --yellow: #f9aa00c4;
+}
+
+body {
+    width: 100%;
+    background-color: var(--pale);
+}
+
+
+.landing-page-main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url(../images/landingpage_mesh.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0 0 20px 50px;
+}
+
+
+.hero-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.hero-main h1::selection,
+.hero-main p::selection {
+    background-color: var(--yellow);
+}
+
+.hero-main .left {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    font-size: 1.5rem;
+    margin-bottom: 70px;
+    color: var(--black-subheading);
+}
+
+.hero-main .left h1 {
+    font-size: 3.4rem;
+    font-family: "sora";
+    color: var(--black);
+    line-height: 60px;
+}
+
+.hero-main .left p {
+    font-size: 1.4rem;
+}
+
+.hero-main .left a {
+    width: max-content;
+    text-decoration: none;
+    background-color: var(--red);
+    padding: 10px 20px;
+    color: var(--pale);
+    border-radius: 7px;
+    transition: 0.2s ease-in-out;
+}
+
+.hero-main .left a:hover {
+    background-color: var(--black);
+}
+
+
+
+.hero-main .right {
+    width: 50%;
+}
+
+.hero-main .right img {
+    width: 450px;
+    margin-left: 60px;
+}
+
+.testing {
+    height: 500px;
+}
+
+
+.feedback-section {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+.feedback-section h1 {
+    text-align: center;
+    font-family: "sora";
+    margin: 10px 0;
+    font-size: 2.5rem;
+}
+
+.feedback-session-warp {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    gap: 40px;
+}
+
+.feedback-section .right,
+.feedback-section .left {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-section .right {
+    width: max-content;
+    background-color: var(--lightest-grey);
+    border-radius: 30px;
+    padding: 30px 50px;
+}
+
+.feedback-section .right h3 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.feedback-section .left img {
+    width: 600px;
+    background-color: #ffb499;
+    background-image:
+        radial-gradient(at 1% 21%, hsla(131, 88%, 78%, 1) 0px, transparent 50%),
+        radial-gradient(at 35% 32%, hsla(310, 82%, 67%, 1) 0px, transparent 50%),
+        radial-gradient(at 31% 73%, hsla(40, 95%, 76%, 1) 0px, transparent 50%),
+        radial-gradient(at 97% 30%, hsla(196, 87%, 79%, 1) 0px, transparent 50%),
+        radial-gradient(at 69% 76%, hsla(275, 96%, 79%, 1) 0px, transparent 50%),
+        radial-gradient(at 51% 6%, hsla(167, 66%, 62%, 1) 0px, transparent 50%),
+        radial-gradient(at 82% 62%, hsla(19, 60%, 74%, 1) 0px, transparent 50%);
+    padding: 40px;
+    border-radius: 30px;
+}
+
+#feebackForm {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+input,
+textarea {
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 8px 15px;
+    border: none;
+    margin: 10px 0;
+    color: #141414df;
+    border-radius: 5px;
+    font-family: "outfit";
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--grey);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+label {
+    font-weight: 500;
+}
+
+button {
+    font-size: 1.3rem;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    margin-top: 30px;
+    background-color: var(--black);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    scale: 1;
+    transition: 0.2s ease-in;
+    align-self: end;
+}
+
+button:hover {
+    scale: 1;
+    background-color: var(--red);
+}

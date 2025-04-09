@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+    <link rel="stylesheet" href="assets/css/login-signup.css">
+    <link rel="preload" as="image" href="assets/mesh.webp">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Create New Account</h1>
+        <form id="SignupForm" action="">
+
+            <div class="name">
+                <div class="first_name">
+                    <label for="fname">First Name:</label>
+                    <input type="text" placeholder="First Name" id="fname" required>
+                </div>
+
+                <div class="last_name">
+                    <label for="lname">Last Name:</label>
+                    <input type="text" placeholder="Last Name" id="lname" required>
+                </div>
+            </div>
+
+            <label for="username">Username: </label>
+            <input type="text" placeholder="Username" id="username" required>
+
+            <label for="email">Email: </label>
+            <input type="email" placeholder="Email" id="email" required>
+
+            <div class="phNum-gender">
+                <div class="phNum">
+                    <label for="pNum">Ph Number: </label>
+                    <input type="number" placeholder="Ph Number" id="pNum" required>
+                </div>
+
+                <div class="gender">
+                    <label for="gender">Gender: </label>
+                    <input type="text" placeholder="Male / Female" id="gender" required>
+                </div>
+            </div>
+
+            <label for="password">Password:</label>
+            <input type="password" placeholder="password" id="password" required>
+
+            <label for="cPassword">Confirm Password:</label>
+            <input type="password" placeholder="Confrim password" id="cPassword" required>
+
+            <p>Already Have and Account? <a href="login.html">Login here</a></p>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+
+    <script>
+        document.getElementById('SignupForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const genderInput = document.getElementById('gender').value.trim().toLowerCase();
+            if (genderInput !== "male" && genderInput !== "female") {
+                alert("Please enter 'Male' or 'Female' only for Gender.");
+                return;
+            }
+
+            const payload = {
+                FirstName: document.getElementById('fname').value,
+                LastName: document.getElementById('lname').value,
+                Username: document.getElementById('username').value,
+                Email: document.getElementById('email').value,
+                PhoneNumber: document.getElementById('pNum').value,
+                Password: document.getElementById('password').value,
+                Gender: genderInput.charAt(0).toUpperCase() + genderInput.slice(1), // Capitalize
+                Address: "Not Provided"
+            };
+
+            const confirmPassword = document.getElementById('cPassword').value;
+
+            if (payload.Password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            try {
+                const res = await fetch('http://localhost:3000/api/users/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await res.json();
+                if (res.ok) {
+                    alert('User registered successfully!');
+                    window.location.href = 'login.html'; // Redirect
+                } else {
+                    alert(data.error || 'Registration failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Something went wrong.');
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

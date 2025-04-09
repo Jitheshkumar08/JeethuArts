@@ -1,19 +1,13 @@
+// controllers/userController.js
 const { sql, poolPromise } = require('../dbconfig');
 const bcrypt = require('bcryptjs');
 
-// Register a new user
 const registerUser = async (req, res) => {
     try {
         const pool = await poolPromise;
         const {
-            Username,
-            Password,
-            Email,
-            FirstName,
-            LastName,
-            Gender,
-            Address,
-            PhoneNumber,
+            Username, Password, Email, FirstName, LastName,
+            Gender, Address, PhoneNumber
         } = req.body;
 
         const hashedPassword = await bcrypt.hash(Password, 10);
@@ -38,7 +32,6 @@ const registerUser = async (req, res) => {
     }
 };
 
-// Login a user
 const loginUser = async (req, res) => {
     try {
         const pool = await poolPromise;
@@ -49,16 +42,16 @@ const loginUser = async (req, res) => {
             .query('SELECT * FROM Users WHERE Username = @Username');
 
         const user = result.recordset[0];
-
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-        }
+        if (!user) return res.status(404).json({ error: 'User not found' });
 
         const isMatch = await bcrypt.compare(Password, user.Password);
+        if (!isMatch) return res.status(401).json({ error: 'Invalid password' });
 
-        if (!isMatch) {
-            return res.status(401).json({ error: 'Invalid password' });
-        }
+        req.session.user = {
+            UserID: user.UserID,
+            Username: user.Username,
+            Role: user.Role
+        };
 
         res.status(200).json({ message: 'Login successful' });
     } catch (err) {
@@ -67,7 +60,19 @@ const loginUser = async (req, res) => {
     }
 };
 
+const logoutUser = (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error("❌ Logout Error:", err);
+            return res.status(500).send("Logout failed");
+        }
+        res.clearCookie('connect.sid');
+        res.redirect('/login.html?loggedout=true');
+    });
+};
+
 module.exports = {
     registerUser,
     loginUser,
+    logoutUser
 };

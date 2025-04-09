@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Sora:wght@100..800&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: "outfit";
+    --red: #cb051d;
+    --pale: #fbfbf3;
+    --black: #141414;
+    --grey: #6b6b6b;
+    --light-grey: #d2d0ca;
+    --lightest-grey: #e7e5de;
+    --green: #4cd137;
+}
+
+nav {
+    width: 100%;
+    height: 77.6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    font-size: 1.25rem;
+    padding: 10px 60px;
+    margin-top: 10px;
+}
+
+nav ul {
+    display: flex;
+    background-color: var(--pale);
+    padding: 7px;
+    gap: 5px;
+    border-radius: 37px;
+    box-shadow: 0 0 84px 0 rgba(142, 142, 142, 0.733);
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+.nav-menus a {
+    display: block;
+    background-color: var(--light-grey);
+    color: var(--black);
+    padding: 5px 15px;
+    border-radius: 28px;
+    transition: 0.2s ease-in;
+}
+
+.nav-menus a:hover {
+    background-color: var(--black);
+    color: var(--pale);
+}
+
+/* .nav-menus li:nth-child(1) a {}
+.nav-menus li:nth-child(1) a:hover {} */
+
+.login-signup a {
+    text-decoration: none;
+    display: block;
+    background-color: var(--light-grey);
+    color: var(--black);
+    padding: 5px 15px;
+    border-radius: 28px;
+    transition: 0.2s ease-in;
+}
+
+.login-signup li a {
+    border-radius: 12px;
+    padding: 9px 18px;
+    background-color: var(--light-grey);
+}
+
+.login-signup li:nth-child(1) a:hover {
+    background-color: var(--black);
+    color: var(--pale);
+}
+
+.login-signup ul li:nth-child(2) a {
+    background-color: var(--red);
+    color: var(--pale);
+}
+
+.login-signup ul {
+    border-radius: 21px;
+}
+
+.login-signup ul li:nth-child(2) a:hover {
+    background-color: var(--black);
+}
+
+.profile img {
+    width: 60px;
+}
+
+
+
+.profile ul {
+    background-color: white;
+    border-radius: 50%;
+    gap: unset;
+    box-shadow: 0 0 184px 0 var(--grey);
+}
+
+
+
+#logoutLink {
+    display: none;
+    height: 60px;
+}
+
+#adminLink {
+    display: none;
+}
+
+
+
+.profile ul a {
+    border-radius: 50%;
+    display: flex;
+    background-color: var(--lightest-grey);
+    padding: unset;
+    gap: unset;
+}
+
+
+footer {
+    background-color: var(--black);
+    height: max-content;
+    border-radius: 2rem;
+    margin: 5px;
+    padding: 20px;
+    color: var(--pale);
+    text-align: center;
+}

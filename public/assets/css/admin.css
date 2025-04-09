@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Sora:wght@100..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Outfit", sans-serif;
+}
+
+:root {
+    --red: #cb051d;
+    --pale: #fbfbf3;
+    --black: #141414;
+    --black-subheading: #1d1d1d;
+    --grey: #6b6b6b;
+    --light-grey: #d2d0ca;
+    --lightest-grey: #e7e5de;
+    --green: #4cd137;
+    --yellow: #f9aa00c4;
+}
+
+body {
+    width: 100%;
+    background-color: var(--pale);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+#uploadArt {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+input {
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 8px 15px;
+    border: none;
+    margin: 10px 0;
+    color: #141414df;
+    border-radius: 5px;
+    font-family: "outfit";
+}
+
+input::placeholder {
+    color: var(--grey);
+}
+
+label {
+    font-weight: 500;
+}
+
+button {
+    font-size: 1.3rem;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    margin-top: 30px;
+    background-color: var(--black);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    scale: 1;
+    transition: 0.2s ease-in;
+    align-self: end;
+}
+
+button:hover {
+    scale: 1;
+    background-color: var(--red);
+}
+
+
+
+/* ------------------- */
+
+
+.upload-art-details h1 {
+    text-align: center;
+}
+
+.upload-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    background-color: var(--lightest-grey);
+    margin: 0 70px;
+    border-radius: 30px;
+}
+
+.upload-wrap .left {
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+.upload-wrap .left img {
+    width: 550px;
+    padding: 30px 60px;
+    border-radius: 15px;
+    background-color: #a2b699ac;
+    background-image:
+        radial-gradient(at 60% 2%, hsla(200, 82%, 64%, 1) 0px, transparent 50%),
+        radial-gradient(at 47% 44%, hsla(338, 75%, 66%, 1) 0px, transparent 50%),
+        radial-gradient(at 33% 80%, hsla(198, 81%, 66%, 1) 0px, transparent 50%),
+        radial-gradient(at 91% 84%, hsla(48, 92%, 78%, 1) 0px, transparent 50%),
+        radial-gradient(at 70% 3%, hsla(5, 66%, 71%, 1) 0px, transparent 50%),
+        radial-gradient(at 52% 53%, hsla(298, 85%, 72%, 1) 0px, transparent 50%),
+        radial-gradient(at 40% 74%, hsla(267, 83%, 71%, 1) 0px, transparent 50%);
+}
+
+.upload-wrap .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.upload-wrap .right h3 {
+    font-size: 2rem;
+    margin: 30px 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-family: "sora";
+    text-align: center;
+    margin: 40px 0;
+}
+
+#uploadArt {
+    margin: 30px;
+}
+
+
+.manage-uploaded-artworks {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: var(--lightest-grey);
+    margin: 0 70px;
+    border-radius: 30px;
+    margin-bottom: 50px;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 35px 0;
+}
+
+.art-card {
+    width: 350px;
+    height: max-content;
+    border-radius: 15px;
+    background-color: var(--light-grey);
+    padding: 20px;
+    transition: 0.4s ease-in-out;
+}
+
+
+.art-card:hover {
+    box-shadow: 0 0 40px 0 rgb(128, 128, 128);
+}
+
+.art-card img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.art-details {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+}
+
+.art-details h3 {
+    font-size: 1.7rem;
+}
+
+
+.price-availablity {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-family: "sora";
+    font-weight: 600;
+}
+
+.availability {
+    background-color: var(--green);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.art-card button {
+    width: 100%;
+    margin-top: 20px;
+    background-color: var(--red);
+    color: var(--pale);
+    border: none;
+    font-size: 1.3rem;
+    padding: 15px;
+    border-radius: 15px;
+    transition: 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+.art-card button:hover {
+    background-color: var(--black);
+}

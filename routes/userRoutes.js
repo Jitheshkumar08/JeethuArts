@@ -1,11 +1,23 @@
+// routes/userRoutes.js
 const express = require('express');
 const router = express.Router();
-const { registerUser, loginUser } = require('../controllers/userController');
+const { registerUser, loginUser, logoutUser } = require('../controllers/userController');
 
-// POST /api/users/register
+// Register
 router.post('/register', registerUser);
 
-// POST /api/users/login
+// Login
 router.post('/login', loginUser);
+
+// Logout
+router.get('/logout', logoutUser);
+
+// Get current session user
+router.get('/current', (req, res) => {
+    if (!req.session.user) {
+        return res.status(401).json({ message: 'Not logged in' });
+    }
+    res.json(req.session.user);
+});
 
 module.exports = router;

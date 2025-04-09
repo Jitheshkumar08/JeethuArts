@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JeethuArts-Admin</title>
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <nav>
+            <a href="">LOGO</a>
+            <div class="nav-menus">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/gallery">Gallery</a></li>
+                    <li><a href="/admin" id="adminLink">Admin</a></li>
+                    <li><a href="">Commisson</a></li>
+                    <li><a href="">About Me</a></li>
+                    <li><a href="#feedback-section">Contact Me</a></li>
+                </ul>
+            </div>
+            <div class="profile">
+                <ul>
+                    <li><a href="/api/users/logout"><img src="assets/images/profile-pic-default-boy.png"
+                                alt="Profile-pic"></a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="upload-art-details">
+            <h1>Welcome back, Admin! Ready to manage your art world?</h1>
+            <div class="upload-wrap">
+                <div class="left">
+                    <img src="assets/images/upload-image.png" alt="young-boung-uploading-image">
+                </div>
+
+                <div class="right">
+                    <h3>Upload Your Artwork</h3>
+                    <form action="" method="POST" id="uploadArt">
+
+                        <label for="title">Title: </label>
+                        <input type="text" placeholder="title" name="Title" id="title" required>
+
+                        <label for="description">Description:</label>
+                        <input type="text" name="description" placeholder="Description" id="description" required>
+
+                        <label for="artType">Art Type:</label>
+                        <input type="text" name="artType" placeholder="ArtType (e.g. Pencil, Watercolor)" id="artType"
+                            required>
+
+                        <label for="price">Price:</label>
+                        <input type="number" name="price" placeholder="Price (₹)" id="price" required>
+
+                        <label for="tags">Tags:</label>
+                        <input type="text" name="tags" placeholder="Tags (e.g. abstract, nature)" id="tags">
+
+                        <label for="dimension">Dimension:</label>
+                        <input type="text" name="dimension" placeholder="Dimensions (e.g. 12x16 in)" id="dimension"
+                            required>
+
+                        <label for="artImage">Art Image:</label>
+                        <input type="file" name="artImage" placeholder="artImage" id="artImage" required>
+
+
+                        <button type="submit">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <h1>Display and Manage your Uploaded creative Artworks</h1>
+
+        <section class="manage-uploaded-artworks">
+
+            <div class="grid-container">
+                <div class="art-card">
+                    <img src="assets/Adheera - KGF2.png" alt="adheera">
+                    <div class="art-details">
+                        <h3 class="title">Adheera - KGF</h3>
+
+                    </div>
+                    <button type="button">Delete</button>
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <footer>
+            <p class="copyright">© 2025 JeethuArts. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>

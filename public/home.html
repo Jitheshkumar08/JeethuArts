@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JeethuArts</title>
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="preload" as="image" href="assets/mesh.webp">
+    <link rel="preload" as="image" href="assets/landingpage_mesh.webp">
+    <link rel="icon" href="assets/logo-circle.png" type="image/png">
+</head>
+
+<body>
+    <section class="landing-page-main">
+        <nav>
+            <a href="">LOGO</a>
+            <div class="nav-menus">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/admin" id="adminLink">Admin</a></li>
+                    <li><a href="">Commisson</a></li>
+                    <li><a href="">About Me</a></li>
+                    <li><a href="#feedback-section">Contact Me</a></li>
+                </ul>
+            </div>
+            <div class="login-signup">
+                <ul id="loginLink">
+                    <li><a href="/login">LogIn</a></li>
+                    <li><a href="/signup">SignUp</a></li>
+                </ul>
+                <div class="profile" id="logoutLink">
+                    <ul>
+                        <li><a href="/api/users/logout"><img src="assets/images/profile-pic-default-boy.png"
+                                    alt="Profile-pic"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="hero-main">
+            <div class="left">
+                <h1>“Every Artwork Has a Soul <br> Discover Mine”</h1>
+                <p>Welcome to my official art gallery a curated space where creativity meets craftsmanship. Explore
+                    and collect original artworks, each piece thoughtfully created to bring inspiration into your space.
+                </p>
+                <a href="/gallery">Explore Gallery</a>
+            </div>
+            <div class="right">
+                <img src="assets/images/hero-boy-paintng.png" alt="young-boy-painting-in-canvas">
+            </div>
+        </div>
+
+
+    </section>
+
+    <div class="feedback-section" id="feedback-section">
+        <h1>Contact Me</h1>
+        <div class="feedback-session-warp">
+            <div class="left">
+                <img src="assets/images/young-boy-reading-envelope.png" alt="">
+            </div>
+            <div class="right">
+                <h3>Feedback</h3>
+                <form action="https://api.web3forms.com/submit" method="POST" id="feebackForm">
+                    <input type="hidden" name="access_key" value="3309a53b-adb4-445a-97ca-ddd0c9d35053">
+                    <label for="name">Name: </label>
+                    <input type="text" placeholder="Name" name="Name" id="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" placeholder="Email" id="email" required>
+                    <label for="feedbackData">Give Feedback:</label>
+                    <textarea name="feedbackMessage" id="feedbackData" placeholder="Text here..."></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p class="copyright">© 2025 JeethuArts. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>
