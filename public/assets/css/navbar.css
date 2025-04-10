@@ -104,7 +104,8 @@ nav a {
     background-color: var(--black);
 }
 
-#logoutLink ul {
+#logoutLink ul,
+.profile ul {
     margin-left: 124px;
 }
 
