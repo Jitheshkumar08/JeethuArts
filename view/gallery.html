@@ -33,11 +33,13 @@
         </nav>
 
         <h1>Elevate Your Walls with Original Art</h1>
-
-        <!-- Gallery Section for Users -->
-        <section class="gallery-grid" id="artworks">
-            <!-- Art cards with "Buy Now" will dynamically appear here -->
+        <section class="artGallery">
+            <!-- Gallery Section for Users -->
+            <div class="gallery-grid" id="artworks">
+                <!-- Art cards with "Buy Now" will dynamically appear here -->
+            </div>
         </section>
+
 
         <footer>
             <p class="copyright">© 2025 JeethuArts. All rights reserved.</p>
@@ -56,13 +58,13 @@
                         card.className = "art-card";
 
                         card.innerHTML = `
-                            <img src="/uploads/${art.image_filename}" alt="${art.title}">
+                            <img src="/uploads/${art.ImagePath.split('/').pop()}" alt="${art.Title}">
                             <div class="art-details">
-                                <h3 class="title">${art.title}</h3>
-                                <p class="description">${art.description}</p>
+                                <h3 class="title">${art.Title}</h3>
+                                <p class="description">${art.Description}</p>
                                 <div class="price-availablity">
-                                    <p class="availability">${art.availability}</p>
-                                    <p class="price">Rs ${art.price}</p>
+                                    <p class="availability">${art.IsAvailable ? 'Available' : 'Sold'}</p>
+                                    <p class="price">Rs ${art.Price}</p>
                                 </div>
                             </div>
                             <button type="button">Buy Now</button>
@@ -76,6 +78,7 @@
                 });
         });
     </script>
+
 
     <script src="/assets/js/script.js"></script>
 </body>

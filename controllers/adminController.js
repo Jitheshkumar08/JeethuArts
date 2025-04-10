@@ -64,7 +64,7 @@ exports.getAllArtworks = async (req, res) => {
                 INNER JOIN Users u ON a.UploadedBy = u.UserID
                 ORDER BY a.ArtworkID DESC
             `);
-        res.status(200).json({ message: 'Artwork uploaded successfully' });
+
         res.status(200).json(result.recordset);
     } catch (error) {
         console.error('Fetch Artworks Error:', error);

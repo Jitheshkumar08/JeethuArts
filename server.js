@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const session = require('express-session');
+const sql = require('mssql');
 
 const userRoutes = require('./routes/userRoutes');
 const adminRoutes = require('./routes/adminRoutes');
@@ -23,8 +24,6 @@ app.use(session({
 }));
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
-
-
 
 // Routes
 app.use('/api/users', userRoutes);
@@ -54,12 +53,49 @@ app.get('/admin', ensureAdmin, (req, res) => {
     res.sendFile(path.join(__dirname, 'view', 'admin.html'));
 });
 
+// Add this new route to fetch artworks
+app.get('/api/artworks', async (req, res) => {
+    try {
+        const pool = await poolPromise;
+        const result = await pool.request().query('SELECT * FROM artworks');  // Adjust to match your DB schema
+        res.json(result.recordset);
+    } catch (err) {
+        console.error('Error fetching artworks:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
-
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`✅ Server running on http://localhost:${PORT}`);
 });
 
+// MSSQL Database connection
+const config = {
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    server: process.env.DB_SERVER,
+    options: {
+        encrypt: false,
+        trustServerCertificate: true,
+    },
+    port: parseInt(process.env.DB_PORT) || 1433,
+};
+
+const poolPromise = new sql.ConnectionPool(config)
+    .connect()
+    .then(pool => {
+        console.log('✅ MSSQL Connected');
+        return pool;
+    })
+    .catch(err => {
+        console.error('❌ Database Connection Failed!', err);
+        throw err;
+    });
+
+module.exports = {
+    sql,
+    poolPromise,
+};

@@ -152,7 +152,7 @@ h1 {
     margin-bottom: 50px;
 }
 
-.grid-container {
+.gallery-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

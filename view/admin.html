@@ -106,11 +106,13 @@
         </section>
 
         <h1>Manage your Uploaded creative Artworks</h1>
-
-        <!-- Artwork Grid for Admin -->
-        <section class="gallery-grid" id="adminArtworks">
-            <!-- Art cards with delete buttons will appear here -->
+        <section class="manage-uploaded-artworks">
+            <!-- Artwork Grid for Admin -->
+            <section class="gallery-grid" id="adminArtworks">
+                <!-- Art cards with delete buttons will appear here -->
+            </section>
         </section>
+
 
         <footer>
             <p class="copyright">© 2025 JeethuArts. All rights reserved.</p>
@@ -131,17 +133,17 @@
                         card.className = "art-card";
 
                         card.innerHTML = `
-                            <img src="/uploads/${art.image_filename}" alt="${art.title}">
-                            <div class="art-details">
-                                <h3 class="title">${art.title}</h3>
-                                <p class="description">${art.description}</p>
-                                <div class="price-availablity">
-                                    <p class="availability">${art.availability}</p>
-                                    <p class="price">Rs ${art.price}</p>
-                                </div>
-                            </div>
-                            <button onclick="deleteArtwork(${art.artwork_id})">Delete</button>
-                        `;
+                    <img src="/uploads/${art.ImagePath.split('/').pop()}" alt="${art.Title}">
+                    <div class="art-details">
+                        <h3 class="title">${art.Title}</h3>
+                        <p class="description">${art.Description}</p>
+                        <div class="price-availablity">
+                            <p class="availability">${art.IsAvailable ? 'Available' : 'Sold'}</p>
+                            <p class="price">Rs ${art.Price}</p>
+                        </div>
+                    </div>
+                    <button onclick="deleteArtwork(${art.ArtworkID})">Delete</button>
+                `;
 
                         container.appendChild(card);
                     });
@@ -160,8 +162,8 @@
                         }
                     });
             };
-
         });
+
     </script>
     <script src="/assets/js/script.js"></script>
 </body>
