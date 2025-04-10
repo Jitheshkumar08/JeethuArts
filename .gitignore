@@ -1,18 +1,15 @@
 # Sensitive info
 .env
 
-# Uploads
-uploads/
+
 
 # System files
 .DS_Store
 Thumbs.db
 
-routes/
 
-view/
-middleware/
-controllers/
+
+
 
 # Logs
 *.log
