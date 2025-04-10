@@ -1,12 +1,9 @@
-// File: /middleware/authMiddleware.js
-
 // Ensure the user is logged in
 function ensureLoggedIn(req, res, next) {
     if (req.session && req.session.user) {
-        // console.log(`✅ Logged in as: ${req.session.user.Username}`);
-        return next();
+        return next();  // Proceed to the next middleware or route handler
     } else {
-        // console.log("⚠️ Not logged in - redirecting to login");
+        // Redirect to login if not logged in
         return res.redirect('/login');
     }
 }
@@ -14,20 +11,17 @@ function ensureLoggedIn(req, res, next) {
 // Ensure the user is an admin
 function ensureAdmin(req, res, next) {
     if (req.session && req.session.user && req.session.user.Role === 'admin') {
-        // console.log(`🔐 Admin access granted to: ${req.session.user.Username}`);
-        return next();
+        return next();  // Admin can proceed
     } else {
-        // console.log("🚫 Admin access denied - redirecting to home");
+        // Redirect to home if not admin
         return res.redirect('/home');
     }
 }
 
+// Export the middleware functions
+module.exports = { ensureLoggedIn, ensureAdmin };
 
-module.exports = function ensureLoggedIn(req, res, next) {
-    if (req.session && req.session.user) {
-        return next();
-    }
-    res.status(401).send('Unauthorized');
-};
+    
+
 
 

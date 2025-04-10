@@ -8,8 +8,7 @@ const sql = require('mssql');
 
 const userRoutes = require('./routes/userRoutes');
 const adminRoutes = require('./routes/adminRoutes');
-const ensureLoggedIn = require('./middleware/authMiddleware');
-const ensureAdmin = require('./middleware/ensureAdmin');
+const { ensureLoggedIn, ensureAdmin } = require('./middleware/authMiddleware');  // Corrected import
 
 const app = express();
 

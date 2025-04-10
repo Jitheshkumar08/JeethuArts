@@ -37,6 +37,7 @@ nav ul {
     gap: 5px;
     border-radius: 37px;
     box-shadow: 0 0 84px 0 rgba(142, 142, 142, 0.733);
+
 }
 
 nav li {
@@ -45,6 +46,11 @@ nav li {
 
 nav a {
     text-decoration: none;
+}
+
+#jeethuArtsLogo {
+    width: 200px;
+    position: relative;
 }
 
 .nav-menus a {
@@ -96,6 +102,10 @@ nav a {
 
 .login-signup ul li:nth-child(2) a:hover {
     background-color: var(--black);
+}
+
+#logoutLink ul {
+    margin-left: 124px;
 }
 
 .profile img {
