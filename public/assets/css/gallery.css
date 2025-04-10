@@ -31,6 +31,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 h1 {
@@ -57,6 +58,7 @@ h1 {
     align-items: center;
     gap: 50px;
     padding: 35px 0;
+
 }
 
 .art-card {
@@ -68,6 +70,10 @@ h1 {
     transition: 0.4s ease-in-out;
 }
 
+
+.gallery-grid {
+    min-height: 58vh;
+}
 
 .art-card:hover {
     box-shadow: 0 0 40px 0 rgba(128, 128, 128, 0.836);

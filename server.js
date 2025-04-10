@@ -16,13 +16,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'imjeethuarts',
+    secret: process.env.SESSION_SECRET || 'mypasswordispassword123',
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false }
 }));
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
+
+
 
 // Routes
 app.use('/api/users', userRoutes);
@@ -52,8 +54,12 @@ app.get('/admin', ensureAdmin, (req, res) => {
     res.sendFile(path.join(__dirname, 'view', 'admin.html'));
 });
 
+
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`✅ Server running on http://localhost:${PORT}`);
 });
+

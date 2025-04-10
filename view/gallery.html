@@ -1,17 +1,17 @@
+<!-- Filename: gallery.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JeethuArts</title>
+    <title>Gallery - JeethuArts</title>
     <link rel="stylesheet" href="/assets/css/gallery.css">
     <link rel="stylesheet" href="/assets/css/navbar.css">
 </head>
 
 <body>
     <div class="container">
-
         <nav>
             <a href="">LOGO</a>
             <div class="nav-menus">
@@ -26,39 +26,58 @@
             </div>
             <div class="profile">
                 <ul>
-                    <li><a href="/api/users/logout" id="logoutLink"><img src="assets/images/profile-pic-default-boy.png"
-                                alt="Profile-pic"></a></li>
+                    <li><a href="/api/users/logout" id="logoutLink" title="logout"><img
+                                src="/assets/images/profile-pic-default-boy.png" alt="Profile-pic"></a></li>
                 </ul>
             </div>
         </nav>
 
         <h1>Elevate Your Walls with Original Art</h1>
-        <section class="artGallery">
 
-            <div class="grid-container">
-                <div class="art-card">
-                    <img src="assets/Adheera - KGF2.png" alt="adheera">
-                    <div class="art-details">
-                        <h3 class="title">Adheera - KGF</h3>
-                        <p class="description">Kolar Gold Fields Villan </p>
-                        <div class="price-availablity">
-                            <p class="availability">Available</p>
-                            <p class="price">Rs 6000</p>
-                        </div>
-                    </div>
-                    <button type="button">Buy Now</button>
-                </div>
-
-            </div>
+        <!-- Gallery Section for Users -->
+        <section class="gallery-grid" id="artworks">
+            <!-- Art cards with "Buy Now" will dynamically appear here -->
         </section>
+
         <footer>
             <p class="copyright">© 2025 JeethuArts. All rights reserved.</p>
         </footer>
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("/api/artworks")
+                .then(response => response.json())
+                .then(artworks => {
+                    const container = document.getElementById("artworks");
 
-    <script src="assets/js/script.js"></script>
+                    artworks.forEach(art => {
+                        const card = document.createElement("div");
+                        card.className = "art-card";
 
+                        card.innerHTML = `
+                            <img src="/uploads/${art.image_filename}" alt="${art.title}">
+                            <div class="art-details">
+                                <h3 class="title">${art.title}</h3>
+                                <p class="description">${art.description}</p>
+                                <div class="price-availablity">
+                                    <p class="availability">${art.availability}</p>
+                                    <p class="price">Rs ${art.price}</p>
+                                </div>
+                            </div>
+                            <button type="button">Buy Now</button>
+                        `;
+
+                        container.appendChild(card);
+                    });
+                })
+                .catch(err => {
+                    console.error("Error loading artworks:", err);
+                });
+        });
+    </script>
+
+    <script src="/assets/js/script.js"></script>
 </body>
 
 </html>
