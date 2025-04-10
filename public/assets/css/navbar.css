@@ -120,6 +120,7 @@ nav a {
 
 #adminLink {
     display: none;
+
 }
 
 
@@ -131,6 +132,13 @@ nav a {
     padding: unset;
     gap: unset;
 }
+
+
+#active {
+    background-color: var(--black);
+    color: var(--pale);
+}
+
 
 
 footer {

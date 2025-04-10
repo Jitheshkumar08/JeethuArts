@@ -11,12 +11,12 @@ router.get('/admin', ensureAdmin, (req, res) => {
 const upload = require('../uploadMiddleware');
 const { uploadArtwork } = require('../controllers/adminController');
 
-// Route to handle artwork upload
+
 
 const adminController = require('../controllers/adminController');
 
 
-// 🔥 Correct upload route for the form
+
 router.post('/admin/upload-art', ensureAdmin, upload.single('artImage'), uploadArtwork);
 router.post('/upload-art', adminController.uploadArtwork);
 

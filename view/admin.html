@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="/assets/css/navbar.css">
 
     <script>
-        // Function to handle the form submission
-        async function uploadArtwork(event) {
-            event.preventDefault();  // Prevent the default form submission behavior
 
-            const formData = new FormData(event.target);  // Create form data from the form
+        async function uploadArtwork(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
 
             try {
                 const response = await fetch('/admin/upload-art', {
@@ -25,16 +25,15 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    // Show success message in an alert box if the upload was successful
+
                     alert('Artwork uploaded successfully!');
-                    // Optionally, reset the form here if needed
+
                     event.target.reset();
                 } else {
-                    // If there's an error from the backend, show an alert with the error message
+
                     alert('Error: ' + data.error);
                 }
             } catch (error) {
-                // Handle any network or other unexpected errors
                 console.error('Error uploading artwork:', error);
                 alert('An error occurred while uploading the artwork.');
             }
@@ -50,7 +49,8 @@
                 <ul>
                     <li><a href="/home">Home</a></li>
                     <li><a href="/gallery">Gallery</a></li>
-                    <li><a href="/admin" id="adminLink">Admin</a></li>
+                    <li><a href="/admin" id="adminLink">Admin</a>
+                    </li>
                     <li><a href="/home">Commisson</a></li>
                     <li><a href="/home">About Me</a></li>
                     <li><a href="/home#feedback-section">Contact Me</a></li>
@@ -107,9 +107,9 @@
 
         <h1>Manage your Uploaded creative Artworks</h1>
         <section class="manage-uploaded-artworks">
-            <!-- Artwork Grid for Admin -->
+
             <section class="gallery-grid" id="adminArtworks">
-                <!-- Art cards with delete buttons will appear here -->
+
             </section>
         </section>
 
@@ -139,7 +139,7 @@
                         <p class="description">${art.Description}</p>
                         <div class="price-availablity">
                             <p class="availability">${art.IsAvailable ? 'Available' : 'Sold'}</p>
-                            <p class="price">Rs ${art.Price}</p>
+                            <p class="price">₹ ${art.Price}</p>
                         </div>
                     </div>
                     <button onclick="deleteArtwork(${art.ArtworkID})">Delete</button>

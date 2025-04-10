@@ -17,6 +17,7 @@ document.getElementById('uploadArt').addEventListener('submit', async function (
             // Success: Show the success message in the #message div
             // document.getElementById('message').innerHTML = `<div style="color: green;">${result.message}</div>`;
             alert(result.message);
+            location.reload();
         } else {
             // Error: Show the error message in the #message div
             // document.getElementById('message').innerHTML = `<div style="color: red;">${result.error}</div>`;

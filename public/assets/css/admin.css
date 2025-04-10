@@ -229,3 +229,8 @@ h1 {
 .art-card button:hover {
     background-color: var(--black);
 }
+
+#adminLink {
+    background-color: var(--black);
+    color: var(--pale);
+}

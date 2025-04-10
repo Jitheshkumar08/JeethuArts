@@ -17,7 +17,7 @@
             <div class="nav-menus">
                 <ul>
                     <li><a href="/home">Home</a></li>
-                    <li><a href="/gallery">Gallery</a></li>
+                    <li><a href="/gallery" id="active">Gallery</a></li>
                     <li><a href="/admin" id="adminLink">Admin</a></li>
                     <li><a href="/home">Commisson</a></li>
                     <li><a href="/home">About Me</a></li>
@@ -34,9 +34,9 @@
 
         <h1>Elevate Your Walls with Original Art</h1>
         <section class="artGallery">
-            <!-- Gallery Section for Users -->
+
             <div class="gallery-grid" id="artworks">
-                <!-- Art cards with "Buy Now" will dynamically appear here -->
+                <!-- art cards -->
             </div>
         </section>
 
@@ -64,7 +64,7 @@
                                 <p class="description">${art.Description}</p>
                                 <div class="price-availablity">
                                     <p class="availability">${art.IsAvailable ? 'Available' : 'Sold'}</p>
-                                    <p class="price">Rs ${art.Price}</p>
+                                    <p class="price">₹ ${art.Price}</p>
                                 </div>
                             </div>
                             <button type="button">Buy Now</button>
