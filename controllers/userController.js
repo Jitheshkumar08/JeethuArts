@@ -26,6 +26,7 @@ const registerUser = async (req, res) => {
                     VALUES (@Username, @Password, @Email, @FirstName, @LastName, @Gender, @Address, @PhoneNumber)`);
 
         res.status(200).json({ message: 'User registered successfully!' });
+        res.redirect('/gallery.html?loggedin=true');
     } catch (err) {
         console.error('❌ Register Error:', err);
         res.status(500).json({ error: err.message || 'Registration failed' });

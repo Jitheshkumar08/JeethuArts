@@ -63,9 +63,19 @@
     </div>
 
     <script>
+        const params = new URLSearchParams(window.location.search);
+        let loginmsg = false;
+        if (params.get("loggedin") === "true") {
+            loginmsg = true;
+        }
 
         window.onload = function () {
-            popupSuccess("Success", "You have been logged In successfully!");
+            if (loginmsg == true) {
+                popupSuccess("Success", "You have been logged In successfully!");
+                setTimeout(() => {
+                    window.location.href = "/gallery";
+                }, 2500);
+            }
         };
         document.addEventListener("DOMContentLoaded", () => {
             fetch("/api/artworks")

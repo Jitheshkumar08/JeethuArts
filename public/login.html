@@ -85,6 +85,9 @@
         window.onload = function () {
             if (logoutmsg == true) {
                 popupSuccess("Success", "You have been logged out successfully!");
+                setTimeout(() => {
+                    window.location.href = "/login";
+                }, 2500);
             }
         };
 
@@ -105,7 +108,7 @@
 
                 const data = await res.json();
                 if (res.ok) {
-                    window.location.href = '/gallery'; // ✅ redirect to gallery
+                    window.location.href = "/gallery?loggedin=true"; // ✅ redirect to gallery
                 } else {
                     // alert(data.error || 'Login failed!');
                     popupFail("Failed", `${data.error}`);

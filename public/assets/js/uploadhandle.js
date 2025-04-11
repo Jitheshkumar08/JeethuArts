@@ -20,7 +20,7 @@ document.getElementById('uploadArt').addEventListener('submit', async function (
             popupSuccess("Success", result.message);
             setTimeout(() => {
                 location.reload();
-            }, 3000);
+            }, 2500);
         } else {
             // Error: Show the error message in the #message div
             // document.getElementById('message').innerHTML = `<div style="color: red;">${result.error}</div>`;
