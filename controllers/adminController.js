@@ -73,16 +73,47 @@ exports.getAllArtworks = async (req, res) => {
     }
 };
 
-// Delete Artwork by ID
+// // Delete Artwork by ID
+// exports.deleteArtwork = async (req, res) => {
+//     try {
+//         const artworkId = req.params.id;
+
+//         if (!artworkId) {
+//             return res.status(400).json({ error: 'Artwork ID is required' });
+//         }
+
+//         const pool = await poolPromise;  // Ensure the pool is connected properly
+//         if (!pool) {
+//             throw new Error("Database pool is not available");
+//         }
+
+//         const result = await pool.request()
+//             .input('ArtworkID', sql.Int, artworkId)
+//             .query('DELETE FROM Artworks WHERE ArtworkID = @ArtworkID');
+
+//         if (result.rowsAffected[0] === 0) {
+//             return res.status(404).json({ error: 'Artwork not found' });
+//         }
+
+//         res.status(200).json({ message: 'Artwork deleted successfully' });
+//     } catch (error) {
+//         console.error('Delete Artwork Error:', error);
+//         res.status(500).json({ error: 'Failed to delete artwork' });
+//     }
+// };
+
+
+
 exports.deleteArtwork = async (req, res) => {
     try {
         const artworkId = req.params.id;
+        console.log('Artwork ID to delete:', artworkId); // Debug log
 
         if (!artworkId) {
             return res.status(400).json({ error: 'Artwork ID is required' });
         }
 
-        const pool = await poolPromise;  // Ensure the pool is connected properly
+        const pool = await poolPromise;
         if (!pool) {
             throw new Error("Database pool is not available");
         }
@@ -91,6 +122,8 @@ exports.deleteArtwork = async (req, res) => {
             .input('ArtworkID', sql.Int, artworkId)
             .query('DELETE FROM Artworks WHERE ArtworkID = @ArtworkID');
 
+        console.log('Delete result:', result); // Debug log
+
         if (result.rowsAffected[0] === 0) {
             return res.status(404).json({ error: 'Artwork not found' });
         }
@@ -98,6 +131,8 @@ exports.deleteArtwork = async (req, res) => {
         res.status(200).json({ message: 'Artwork deleted successfully' });
     } catch (error) {
         console.error('Delete Artwork Error:', error);
-        res.status(500).json({ error: 'Failed to delete artwork' });
+        res.status(500).json({ error: 'Failed to delete artwork', details: error.message });
     }
 };
+
+

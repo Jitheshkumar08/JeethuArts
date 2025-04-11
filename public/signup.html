@@ -6,12 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>signup</title>
     <link rel="stylesheet" href="assets/css/login-signup.css">
+    <link rel="stylesheet" href="assets/css/toastNotification.css">
     <link rel="preload" as="image" href="assets/mesh.webp">
     <link rel="icon" href="assets/images/titleLogo.png" type="image/png">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 
 <body>
+    <div class="toast">
+        <div class="toast-content">
+            <i class="fas fa-solid fa-check check"></i>
+            <i class="fa-solid fa-xmark xmark"></i>
+
+            <div class="message">
+                <span class="text text-1">Success</span>
+                <span class="text text-2">Your changes has been saved</span>
+            </div>
+        </div>
+        <i class="fa-solid fa-xmark close"></i>
+        <div class="progress"></div>
+    </div>
     <div class="container">
         <h1>Create New Account</h1>
         <form id="SignupForm" action="">
@@ -64,7 +78,8 @@
 
             const genderInput = document.getElementById('gender').value.trim().toLowerCase();
             if (genderInput !== "male" && genderInput !== "female") {
-                alert("Please enter 'Male' or 'Female' only for Gender.");
+                popupFail("Invalid Input", "Please enter only 'Male' or 'Female' for gender.");
+
                 return;
             }
 
@@ -82,7 +97,8 @@
             const confirmPassword = document.getElementById('cPassword').value;
 
             if (payload.Password !== confirmPassword) {
-                alert("Passwords do not match!");
+                popupFail("Password Error", "Passwords do not match. Please re-enter them.");
+
                 return;
             }
 
@@ -95,17 +111,23 @@
 
                 const data = await res.json();
                 if (res.ok) {
-                    alert('User registered successfully!');
-                    window.location.href = 'login.html'; // Redirect
+                    popupSuccess("Success", "User registered successfully!");
+                    setTimeout(() => {
+                        window.location.href = 'login.html'; // Redirect
+                    }, 4000);
                 } else {
-                    alert(data.error || 'Registration failed');
+                    popupFail("Registration Failed", data.error || "Registration could not be completed.");
+
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Something went wrong.');
+                popupFail("Error", "Something went wrong. Please try again.");
+
             }
         });
     </script>
+
+    <script src="assets/js/toastNotification.js"></script>
 
 
 </body>

@@ -8,11 +8,26 @@
     <title>Gallery - JeethuArts</title>
     <link rel="stylesheet" href="/assets/css/gallery.css">
     <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/toastNotification.css">
     <link rel="icon" href="assets/images/titleLogo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
 </head>
 
 <body>
+    <div class="toast">
+        <div class="toast-content">
+            <i class="fas fa-solid fa-check check"></i>
+            <i class="fa-solid fa-xmark xmark"></i>
+
+            <div class="message">
+                <span class="text text-1">Success</span>
+                <span class="text text-2">Your changes has been saved</span>
+            </div>
+        </div>
+        <i class="fa-solid fa-xmark close"></i>
+        <div class="progress"></div>
+    </div>
     <div class="container">
         <nav>
             <a href="/home"><img src="assets/images/JeethuArtsLogo.png" id="jeethuArtsLogo" alt="JeethuArtsLogo"></a>
@@ -42,13 +57,16 @@
             </div>
         </section>
 
-
         <footer>
             <p class="copyright">© 2025 JeethuArts. All rights reserved.</p>
         </footer>
     </div>
 
     <script>
+
+        window.onload = function () {
+            popupSuccess("Success", "You have been logged In successfully!");
+        };
         document.addEventListener("DOMContentLoaded", () => {
             fetch("/api/artworks")
                 .then(response => response.json())
@@ -83,6 +101,7 @@
 
 
     <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/toastNotification.js"></script>
 </body>
 
 </html>

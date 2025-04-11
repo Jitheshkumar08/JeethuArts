@@ -6,12 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="assets/css/login-signup.css">
+    <link rel="stylesheet" href="assets/css/toastNotification.css">
     <link rel="preload" as="image" href="assets/mesh.webp">
     <link rel="icon" href="assets/images/titleLogo.png" type="image/png">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 
 <body>
+    <div class="toast">
+        <div class="toast-content">
+            <i class="fas fa-solid fa-check check"></i>
+            <i class="fa-solid fa-xmark xmark"></i>
+
+            <div class="message">
+                <span class="text text-1">Success</span>
+                <span class="text text-2">Your changes has been saved</span>
+            </div>
+        </div>
+        <i class="fa-solid fa-xmark close"></i>
+        <div class="progress"></div>
+    </div>
     <div class="container">
         <h1>Welcome Back</h1>
         <form id="LoginForm" action="">
@@ -30,10 +44,50 @@
 
     <script>
 
+        // const params = new URLSearchParams(window.location.search);
+        // if (params.get("loggedout") === "true") {
+        //     alert("✅ You have been logged out successfully!");
+        // }
+        // document.getElementById('LoginForm').addEventListener('submit', async function (e) {
+        //     e.preventDefault();
+
+        //     const payload = {
+        //         Username: document.getElementById('username').value,
+        //         Password: document.getElementById('password').value
+        //     };
+
+        //     try {
+        //         const res = await fetch('http://localhost:3000/api/users/login', {
+        //             method: 'POST',
+        //             headers: { 'Content-Type': 'application/json' },
+        //             body: JSON.stringify(payload)
+        //         });
+
+        //         const data = await res.json();
+        //         if (res.ok) {
+        //             alert('Login successful!');
+        //             window.location.href = '/gallery'; // ✅ redirect to gallery
+        //         } else {
+        //             alert(data.error || 'Login failed!');
+        //         }
+        //     } catch (err) {
+        //         console.error('Error:', err);
+        //         alert('Something went wrong. Please try again.');
+        //     }
+        // });
+
         const params = new URLSearchParams(window.location.search);
+        let logoutmsg = false;
         if (params.get("loggedout") === "true") {
-            alert("✅ You have been logged out successfully!");
+            logoutmsg = true;
         }
+
+        window.onload = function () {
+            if (logoutmsg == true) {
+                popupSuccess("Success", "You have been logged out successfully!");
+            }
+        };
+
         document.getElementById('LoginForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
@@ -51,19 +105,23 @@
 
                 const data = await res.json();
                 if (res.ok) {
-                    alert('Login successful!');
                     window.location.href = '/gallery'; // ✅ redirect to gallery
                 } else {
-                    alert(data.error || 'Login failed!');
+                    // alert(data.error || 'Login failed!');
+                    popupFail("Failed", `${data.error}`);
+
                 }
             } catch (err) {
                 console.error('Error:', err);
-                alert('Something went wrong. Please try again.');
+                // alert('Something went wrong. Please try again.');
+                popupFail("Failed", "Login failed. Please check your credentials and try again.");
             }
-
-
         });
+
     </script>
+    <script src="assets/js/toastNotification.js"></script>
+    <script src="/controllers/userController.js"></script>
+
 
 </body>
 

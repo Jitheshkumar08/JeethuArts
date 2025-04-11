@@ -8,42 +8,25 @@
     <title>Admin - JeethuArts</title>
     <link rel="stylesheet" href="/assets/css/admin.css">
     <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/toastNotification.css">
     <link rel="icon" href="assets/images/titleLogo.png" type="image/png">
-
-
-    <script>
-
-        async function uploadArtwork(event) {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-
-            try {
-                const response = await fetch('/admin/upload-art', {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-
-                    alert('Artwork uploaded successfully!');
-
-                    event.target.reset();
-                } else {
-
-                    alert('Error: ' + data.error);
-                }
-            } catch (error) {
-                console.error('Error uploading artwork:', error);
-                alert('An error occurred while uploading the artwork.');
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 
 <body>
+    <div class="toast">
+        <div class="toast-content">
+            <i class="fas fa-solid fa-check check"></i>
+            <i class="fa-solid fa-xmark xmark"></i>
+
+            <div class="message">
+                <span class="text text-1">Success</span>
+                <span class="text text-2">Your changes has been saved</span>
+            </div>
+        </div>
+        <i class="fa-solid fa-xmark close"></i>
+        <div class="progress"></div>
+    </div>
     <div class="container">
         <nav>
             <a href="/home"><img src="assets/images/JeethuArtsLogo.png" id="jeethuArtsLogo" alt="JeethuArtsLogo"></a>
@@ -121,52 +104,8 @@
         </footer>
     </div>
 
+    <script src="/assets/js/toastNotification.js"></script>
     <script src="/assets/js/uploadhandle.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            fetch("/api/artworks")
-                .then(res => res.json())
-                .then(artworks => {
-                    const container = document.getElementById("adminArtworks");
-
-                    artworks.forEach(art => {
-                        const card = document.createElement("div");
-                        card.className = "art-card";
-
-                        card.innerHTML = `
-                    <img src="/uploads/${art.ImagePath.split('/').pop()}" alt="${art.Title}">
-                    <div class="art-details">
-                        <h3 class="title">${art.Title}</h3>
-                        <p class="description">${art.Description}</p>
-                        <div class="price-availablity">
-                            <p class="availability">${art.IsAvailable ? 'Available' : 'Sold'}</p>
-                            <p class="price">₹ ${art.Price}</p>
-                        </div>
-                    </div>
-                    <button onclick="deleteArtwork(${art.ArtworkID})">Delete</button>
-                `;
-
-                        container.appendChild(card);
-                    });
-                });
-
-            window.deleteArtwork = function (id) {
-                fetch(`/api/artworks/${id}`, {
-                    method: "DELETE"
-                })
-                    .then(res => {
-                        if (res.ok) {
-                            alert("Artwork deleted successfully.");
-                            window.location.reload();
-                        } else {
-                            alert("Failed to delete artwork.");
-                        }
-                    });
-            };
-        });
-
-    </script>
     <script src="/assets/js/script.js"></script>
 </body>
 

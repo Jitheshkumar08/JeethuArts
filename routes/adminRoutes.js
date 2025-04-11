@@ -19,6 +19,8 @@ const adminController = require('../controllers/adminController');
 
 router.post('/admin/upload-art', ensureAdmin, upload.single('artImage'), uploadArtwork);
 router.post('/upload-art', adminController.uploadArtwork);
+router.delete('/api/artworks/:id', ensureAdmin, adminController.deleteArtwork);
+
 
 module.exports = router;
 

@@ -68,6 +68,7 @@ const logoutUser = (req, res) => {
         }
         res.clearCookie('connect.sid');
         res.redirect('/login.html?loggedout=true');
+
     });
 };
 

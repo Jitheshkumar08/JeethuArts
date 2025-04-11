@@ -25,6 +25,8 @@ html {
 body {
     width: 100%;
     background-color: var(--pale);
+    position: relative;
+    overflow-x: hidden;
 }
 
 
