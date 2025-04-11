@@ -86,7 +86,7 @@
             if (logoutmsg == true) {
                 popupSuccess("Success", "You have been logged out successfully!");
                 setTimeout(() => {
-                    window.location.href = "/login";
+                    window.history.replaceState({}, document.title, "/login");
                 }, 2500);
             }
         };

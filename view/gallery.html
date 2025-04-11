@@ -73,7 +73,7 @@
             if (loginmsg == true) {
                 popupSuccess("Success", "You have been logged In successfully!");
                 setTimeout(() => {
-                    window.location.href = "/gallery";
+                    window.history.replaceState({}, document.title, "/gallery");
                 }, 2500);
             }
         };
