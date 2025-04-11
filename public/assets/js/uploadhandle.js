@@ -20,7 +20,7 @@ document.getElementById('uploadArt').addEventListener('submit', async function (
             popupSuccess("Success", result.message);
             setTimeout(() => {
                 location.reload();
-            }, 4000);
+            }, 3000);
         } else {
             // Error: Show the error message in the #message div
             // document.getElementById('message').innerHTML = `<div style="color: red;">${result.error}</div>`;
@@ -55,7 +55,7 @@ document.getElementById('uploadArt').addEventListener('submit', async function (
 
                 setTimeout(() => {
                     event.target.reset();
-                }, 4000);
+                }, 2500);
 
             } else {
 
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     popupSuccess("Deleted", "Artwork deleted successfully!");
                     setTimeout(() => {
                         window.location.reload();
-                    }, 4000);
+                    }, 2500);
                 } else {
                     //alert("Failed to delete artwork.");
                     popupFail("Delete Failed", "Failed to delete artwork. Please try again.");

@@ -27,11 +27,11 @@ function popupSuccess(title, message) {
 
     timer1 = setTimeout(() => {
         toast.classList.remove("active");
-    }, 4000); //1s = 1000 milliseconds
+    }, 2500); //1s = 1000 milliseconds
 
     timer2 = setTimeout(() => {
         progress.classList.remove("active");
-    }, 4300);
+    }, 2800);
 }
 
 function popupFail(title, message) {
@@ -48,11 +48,11 @@ function popupFail(title, message) {
 
     timer1 = setTimeout(() => {
         toast.classList.remove("active");
-    }, 4000); //1s = 1000 milliseconds
+    }, 2500); //1s = 1000 milliseconds
 
     timer2 = setTimeout(() => {
         progress.classList.remove("active");
-    }, 4300);
+    }, 2800);
 }
 closeIcon.addEventListener("click", () => {
     toast.classList.remove("active");
