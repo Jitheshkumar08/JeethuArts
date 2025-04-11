@@ -137,7 +137,9 @@ body {
     border-radius: 30px;
     padding: 30px 50px;
 }
-
+.aboutme-wrap .right::selection{
+    background-color:#f9975f ;
+}
 
 h3 {
     font-family: "sora";

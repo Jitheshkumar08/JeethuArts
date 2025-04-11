@@ -87,6 +87,10 @@ button:hover {
     text-align: center;
 }
 
+.upload-art-details h1::selection {
+    background-color: #ffb688;
+}
+
 .upload-wrap {
     display: flex;
     justify-content: center;
