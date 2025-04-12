@@ -93,16 +93,17 @@
             </div>
             <div class="right">
                 <h3>Feedback</h3>
-                <form action="https://api.web3forms.com/submit" method="POST" id="feebackForm">
-                    <input type="hidden" name="access_key" value="3309a53b-adb4-445a-97ca-ddd0c9d35053">
+                <form id="feedbackForm">
                     <label for="name">Name: </label>
                     <input type="text" placeholder="Name" name="Name" id="name" required>
                     <label for="email">Email:</label>
                     <input type="email" name="email" placeholder="Email" id="email" required>
                     <label for="feedbackData">Give Feedback:</label>
-                    <textarea name="feedbackMessage" id="feedbackData" placeholder="Text here..."></textarea>
+                    <textarea name="feedbackMessage" id="feedbackData" placeholder="Text here..." required></textarea>
                     <button type="submit">Send Message</button>
                 </form>
+
+
             </div>
         </div>
     </section>
@@ -110,6 +111,7 @@
         <p class="copyright">© 2025 JeethuArts. All rights reserved.</p>
     </footer>
 
+    <script src="assets/js/feedback.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/toastNotification.js"></script>
 

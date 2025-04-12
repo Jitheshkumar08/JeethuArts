@@ -216,7 +216,7 @@ h3 {
     border-radius: 30px;
 }
 
-#feebackForm {
+#feedbackForm {
     width: 500px;
     display: flex;
     flex-direction: column;

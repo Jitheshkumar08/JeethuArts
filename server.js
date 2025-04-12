@@ -5,12 +5,38 @@ const cors = require('cors');
 const path = require('path');
 const session = require('express-session');
 const sql = require('mssql');
-
+const axios = require('axios');
 const userRoutes = require('./routes/userRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const { ensureLoggedIn, ensureAdmin } = require('./middleware/authMiddleware');  // Corrected import
 
 const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+//this is for feedback-handling 
+app.post('/submit-feedback', async (req, res) => {
+    const { name, email, feedbackMessage } = req.body;
+
+    try {
+        const response = await axios.post('https://api.web3forms.com/submit', {
+            access_key: process.env.WEB3FORMS_KEY,
+            name,
+            email,
+            message: feedbackMessage,
+        });
+
+        if (response.data.success) {
+            res.status(200).send("✅ Feedback submitted successfully.");
+        } else {
+            res.status(400).send("❌ Failed to submit feedback.");
+        }
+    } catch (error) {
+        console.error('❌ Error submitting feedback:', error);
+        res.status(500).send("Server error while submitting feedback.");
+    }
+});
 
 // Middleware
 app.use(cors());
